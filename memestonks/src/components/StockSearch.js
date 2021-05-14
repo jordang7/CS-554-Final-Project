@@ -50,10 +50,25 @@ const StockSearch = (props) => {
                     { ticker: 'SVC', name: "Service Properties Trust" },
                     { ticker: 'UBER', name: "Uber Technologies, Inc." },
                     { ticker: 'AG', name: "First Majestic Silver Corp." },
+                    { ticker: 'AMZN', name: "Amazon.com, Inc." },
+                    { ticker: 'MSFT', name: "Microsoft Corporation" },
+                    { ticker: 'JPM', name: "JPMorgan Chase & Co." },
+                    { ticker: 'UPS', name: "United Parcel Service, Inc." },
+                    { ticker: 'BABA', name: "Alibaba Group Holding Limited" },
+                    { ticker: 'CAT', name: "Caterpillar Inc." },
+                    { ticker: 'GDP', name: "Goodrich Petroleum Corporation" },
+                    { ticker: 'RAMP', name: "LiveRamp Holdings, Inc." },
+                    { ticker: 'WMT', name: "Walmart Inc." },
+										{ ticker: 'ESP', name: "Espey Mfg. & Electronics Corp." },
+										{ ticker: 'GOOGL', name: "Alphabet Inc." },
+										{ ticker: 'MARA', name: "Marathon Digital Holdings, Inc." },
+										{ ticker: 'XOM', name: "Exxon Mobil Corporation" },
+										{ ticker: 'FCX', name: "Freeport-McMoRan Inc." },
+										{ ticker: 'ASML', name: "ASML Holding N.V." },
                 ]}
                 getOptionLabel={(option) => option.name}
                 style={{ width: 300 }}
-                renderInput={(params) =><TextField {...params} label="Top 100 Stocks" variant="outlined" />}
+                renderInput={(params) =><TextField {...params} label="Top 50 Stocks" variant="outlined" />}
                 onChange={(event, newValue) => {
                     props.searchValue(newValue);
                   }}
