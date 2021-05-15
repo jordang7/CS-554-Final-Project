@@ -28,10 +28,10 @@ function App(){
                 <Route exact path="/">
                     <Home/>
                 </Route>
-                <Route exact path="/stock-chart">
+                <PrivateRoute exact path="/stock-chart">
                     <FinancialItem/>
-                </Route>
-                <PrivateRoute wxact path="/account">
+                </PrivateRoute>
+                <PrivateRoute exact path="/account">
                   <Account/>
                 </PrivateRoute>
                 <Route exact path="/signin">
