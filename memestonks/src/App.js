@@ -27,6 +27,7 @@ function App() {
       <Provider store={store}>
         <Router>
           <div className="App">
+
             <header className="App-header">
               <Link className="home-link" to="/">
                 Home
@@ -41,7 +42,7 @@ function App() {
             <div className="App-body">
               <Switch>
                 <Route exact path="/" component={Home}/>                  
-                <Route exact path="/stock-chart" component={FinancialItem}/>                  
+                <PrivateRoute exact path="/stock-chart" component={FinancialItem}/>                  
                 <PrivateRoute exact path="/account" component={Account}/>                 
                 <Route exact path="/signin" component={SignIn}/>                 
                 <Route exact path="/signup" component={SignUp}/>
@@ -49,6 +50,8 @@ function App() {
                 <Route component={defaultPath}/>
               </Switch>
             </div>
+
+
           </div>
         </Router>
 
