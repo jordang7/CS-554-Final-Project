@@ -1,12 +1,14 @@
 import React from "react";
 import SignOut from './SignOut';
+import '../css/home.css'
 import {
     Link
 } from "react-router-dom";
 function Root() {
     return (
         <div>
-            <h1>MEMESTONKS</h1>
+            <h1 className="title">MEMESTONKS</h1>
+            <div className="homepage-links">
             <div>
                 <Link to="/stock-chart">Click here for real time stock prices</Link>
             </div>
@@ -19,6 +21,7 @@ function Root() {
                 <Link to="/signup">Click here to Sign Up!</Link>
             </div>
             <br />
+            </div>
             <div>
                 <br />
                 <br />

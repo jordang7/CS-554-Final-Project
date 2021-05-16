@@ -1,50 +1,62 @@
-
 import React from 'react';
 import FinancialItem from "./components/FinancialItem";
 import Home from "./components/Home";
 import SignIn from './components/SignIn';
 import SignUp from './components/SignUp';
-
 import Account from './components/Account';
 import { AuthProvider } from './firebase/Auth';
 import PrivateRoute from './components/PrivateRoute';
+import About from './components/aboutus'
 
 import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link
-  } from "react-router-dom";
-import {Provider} from 'react-redux'
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+import { Provider } from 'react-redux'
 import store from "./store";
 
-function App(){
+const defaultPath = () =>{
+  <h1>Page not found</h1>
+}
+
+function App() {
   return (
     <AuthProvider>
       <Provider store={store}>
+        <Router>
           <div className="App">
-          <Router>
-            <Switch>
-                <Route exact path="/">
-                    <Home/>
-                </Route>
-                <PrivateRoute exact path="/stock-chart">
-                    <FinancialItem/>
-                </PrivateRoute>
-                <PrivateRoute exact path="/account">
-                  <Account/>
-                </PrivateRoute>
-                <Route exact path="/signin">
-                    <SignIn/>
-                </Route>
-                <Route exact path="/signup">
-                    <SignUp/>
-                </Route>
-            </Switch>
-            </Router>
+
+            <header className="App-header">
+              <Link className="home-link" to="/">
+                Home
+              </Link>
+              <Link className="stock-chart-link" to="/stock-chart">
+                Stock Charts
+              </Link>
+              <Link className="about-link" to="/about">
+                About Us
+              </Link>
+            </header>
+            <div className="App-body">
+              <Switch>
+                <Route exact path="/" component={Home}/>                  
+                <PrivateRoute exact path="/stock-chart" component={FinancialItem}/>                  
+                <PrivateRoute exact path="/account" component={Account}/>                 
+                <Route exact path="/signin" component={SignIn}/>                 
+                <Route exact path="/signup" component={SignUp}/>
+                <Route exact path="/about" component={About}/>                
+                <Route component={defaultPath}/>
+              </Switch>
+            </div>
+
+
           </div>
+        </Router>
+
       </Provider>
-      </AuthProvider>
+    </AuthProvider>
   );
 }
 
