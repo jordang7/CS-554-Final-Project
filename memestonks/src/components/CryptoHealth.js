@@ -38,14 +38,16 @@ const CryptoHealth = (props) => {
     return (
       <div>
         <div>
-          <h2>Crypto health</h2>
-          {/* <p>
-            {data["2. name"]}'s health is currently {data["3. fcas rating"]}
-          </p>
-          <p>FCAS Score : {data["4. fcas score"]}</p>
-          <p>Developer Score : {data["5. developer score"]}</p>
-          <p>Market Maturity Score : {data["6. market maturity score"]}</p>
-          <p>Last Updated on {data["8. last refreshed"]} </p> */}
+          {data ? <h2>Crypto health</h2> : null}
+          {data ? data["2. name"] + "'s health is currently " : null}
+          {data ? data["3. fcas rating"] : null}
+
+          {data ? <p>FCAS Score : {data["4. fcas score"]}</p> : null}
+          {data ? <p>Developer Score : {data["5. developer score"]}</p> : null}
+          {data ? (
+            <p>Market Maturity Score : {data["6. market maturity score"]}</p>
+          ) : null}
+          {data ? <p>Last Updated on {data["8. last refreshed"]} </p> : null}
         </div>
       </div>
     );

@@ -17,3 +17,10 @@ export const getCryptoHealth = (symbol) => async (dispatch) => {
     console.log(e);
   }
 };
+
+export const get_search_term = (ticker) => ({
+  type: "GET_SEARCH_TERM",
+  payload: {
+    ticker: ticker,
+  },
+});

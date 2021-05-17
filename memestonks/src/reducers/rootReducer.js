@@ -5,6 +5,7 @@ import financialItemMonthly from "./financialItemMonthlyReducer";
 import financialOverview from "./financialOverviewReducer";
 import cryptoExchange from "./cryptoExchangeReducer";
 import cryptoHealth from "./cryptoHealthReducer";
+import cryptoDaily from "./cryptoDailyReducer";
 export default combineReducers({
   financialItem,
   financialItemWeekly,
@@ -12,4 +13,5 @@ export default combineReducers({
   financialOverview,
   cryptoExchange,
   cryptoHealth,
+  cryptoDaily,
 });

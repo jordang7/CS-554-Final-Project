@@ -8,7 +8,7 @@ import { AuthProvider } from "./firebase/Auth";
 import PrivateRoute from "./components/PrivateRoute";
 import About from "./components/aboutus";
 import Brokerage from "./components/Brokerage";
-import CryptoExchange from "./components/CryptoExchange";
+import CryptoDaily from "./components/CryptoDaily";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./store";
@@ -37,7 +37,7 @@ function App() {
                 About Us
               </Link>
               <Link className="crypto-chart-link" to="/crypto-chart">
-                About Us
+                Crypto Charts
               </Link>
             </header>
             <div className="App-body">
@@ -51,7 +51,7 @@ function App() {
                 <PrivateRoute
                   exact
                   path="/crypto-chart"
-                  component={CryptoExchange}
+                  component={CryptoDaily}
                 />
                 <PrivateRoute exact path="/account" component={Account} />
                 <Route exact path="/signin" component={SignIn} />
