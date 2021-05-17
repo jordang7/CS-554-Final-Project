@@ -5,7 +5,7 @@ export const getCryptoExchange = (symbol) => async (dispatch) => {
   let ticker = symbol;
 
   try {
-    let financialItem = await axios(
+    let cryptoExchange = await axios(
       `http://localhost:8080/cryptoExchangeRates/${ticker}`
     );
     console.log(cryptoExchange.data);
