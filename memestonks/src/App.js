@@ -7,7 +7,7 @@ import Account from './components/Account';
 import { AuthProvider } from './firebase/Auth';
 import PrivateRoute from './components/PrivateRoute';
 import About from './components/aboutus'
-
+import Brokerage from './components/Brokerage'
 import {
   BrowserRouter as Router,
   Switch,
@@ -35,18 +35,22 @@ function App() {
               <Link className="stock-chart-link" to="/stock-chart">
                 Stock Charts
               </Link>
+              <Link className="brokerage-link" to="/brokerage">
+                Brokerage Apps
+              </Link>
               <Link className="about-link" to="/about">
                 About Us
               </Link>
             </header>
             <div className="App-body">
               <Switch>
-                <Route exact path="/" component={Home}/>                  
-                <PrivateRoute exact path="/stock-chart" component={FinancialItem}/>                  
-                <PrivateRoute exact path="/account" component={Account}/>                 
-                <Route exact path="/signin" component={SignIn}/>                 
+                <Route exact path="/" component={Home}/>
+                <PrivateRoute exact path="/stock-chart" component={FinancialItem}/>
+                <PrivateRoute exact path="/account" component={Account}/>
+                <Route exact path="/signin" component={SignIn}/>
                 <Route exact path="/signup" component={SignUp}/>
-                <Route exact path="/about" component={About}/>                
+                <Route exact path="/about" component={About}/>
+                <Route exact path="/brokerage" component={Brokerage}/>
                 <Route component={defaultPath}/>
               </Switch>
             </div>
