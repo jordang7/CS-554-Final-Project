@@ -6,6 +6,7 @@ import {getFinancialItemMonthly,get_search_term} from "../actions/financialMonth
 import StockSearch from "./StockSearch"
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
+import Overview from "./Overview";
 const FinancialItem = () => {
     const [ searchTerm, setSearchTerm ] = useState('');
     const dispatch = useDispatch();
@@ -42,6 +43,9 @@ const FinancialItem = () => {
                     financialItemName={financialItem.symbol}
                 />: null }
             </div>
+            <div>
+        <Overview searchValue={searchTerm} />
+      </div>
         </div>
     );
 };
