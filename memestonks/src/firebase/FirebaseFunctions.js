@@ -1,4 +1,4 @@
-import firebase from 'firebase/app';
+import firebase from "firebase/app";
 
 async function doCreateUserWithEmailAndPassword(email, password, displayName) {
   await firebase.auth().createUserWithEmailAndPassword(email, password);
@@ -15,19 +15,26 @@ async function doChangePassword(email, oldPassword, newPassword) {
   await doSignOut();
 }
 
+async function doUpdateProfile(username) {
+  await firebase.auth().currentUser.updateProfile({
+    displayName: username,
+    // h: address,
+  });
+}
+
 async function doSignInWithEmailAndPassword(email, password) {
   await firebase.auth().signInWithEmailAndPassword(email, password);
 }
 
-// async function doSocialSignIn(provider) {
-//   let socialProvider = null;
-//   if (provider === 'google') {
-//     socialProvider = new firebase.auth.GoogleAuthProvider();
-//   } else if (provider === 'facebook') {
-//     socialProvider = new firebase.auth.FacebookAuthProvider();
-//   }
-//   await firebase.auth().signInWithPopup(socialProvider);
-// }
+async function doSocialSignIn(provider) {
+  let socialProvider = null;
+  if (provider === "google") {
+    socialProvider = new firebase.auth.GoogleAuthProvider();
+  } else if (provider === "facebook") {
+    socialProvider = new firebase.auth.FacebookAuthProvider();
+  }
+  await firebase.auth().signInWithPopup(socialProvider);
+}
 
 async function doPasswordReset(email) {
   await firebase.auth().sendPasswordResetEmail(email);
@@ -39,15 +46,16 @@ async function doPasswordUpdate(password) {
 
 async function doSignOut() {
   await firebase.auth().signOut();
-  alert("Signed out")
+  alert("Signed out");
 }
 
 export {
   doCreateUserWithEmailAndPassword,
-//   doSocialSignIn,
+  doSocialSignIn,
+  doUpdateProfile,
   doSignInWithEmailAndPassword,
   doPasswordReset,
   doPasswordUpdate,
   doSignOut,
-  doChangePassword
+  doChangePassword,
 };

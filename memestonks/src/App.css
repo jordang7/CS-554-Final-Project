@@ -1,4 +1,4 @@
-body{
+body {
   background-color: #333333;
 }
 
@@ -19,14 +19,24 @@ body{
 
 .App-header {
   background-color: black;
-  height: 11px;
-  padding: 10px;
-  padding-top: 0%;
+  /* height: 11px; */
+  padding: 20px;
+  /* padding-top: 0%; */
   color: black;
 }
 
-.home-link, .stock-chart-link, .about-link{
-  margin: 25px;
+.home-link,
+.stock-chart-link,
+.about-link,
+.brokerage-link,
+.crypto-chart-link {
+  /* margin: 25px; */
+  padding: 0.4rem 0.8rem;
+  background-color: white;
+  border-radius: 3px;
+  color: #861e1e;
+  text-decoration: none !important;
+  margin: 5px;
 }
 
 .App-link {

@@ -4,6 +4,7 @@ import Home from "./components/Home";
 import SignIn from "./components/SignIn";
 import SignUp from "./components/SignUp";
 import Account from "./components/Account";
+import Dashboard from "./components/Dashboard";
 import { AuthProvider } from "./firebase/Auth";
 import PrivateRoute from "./components/PrivateRoute";
 import About from "./components/aboutus";
@@ -54,6 +55,7 @@ function App() {
                   component={CryptoDaily}
                 />
                 <PrivateRoute exact path="/account" component={Account} />
+                <PrivateRoute exact path="/dashboard" component={Dashboard} />
                 <Route exact path="/signin" component={SignIn} />
                 <Route exact path="/signup" component={SignUp} />
                 <Route exact path="/about" component={About} />

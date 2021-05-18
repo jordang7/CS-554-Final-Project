@@ -1,11 +1,11 @@
-import React, { useContext } from 'react';
-// import SocialSignIn from './SocialSignIn';
-import { Redirect } from 'react-router-dom';
-import { AuthContext } from '../firebase/Auth';
+import React, { useContext } from "react";
+import SocialSignIn from "./SocialSignIn";
+import { Redirect } from "react-router-dom";
+import { AuthContext } from "../firebase/Auth";
 import {
   doSignInWithEmailAndPassword,
-  doPasswordReset
-} from '../firebase/FirebaseFunctions';
+  doPasswordReset,
+} from "../firebase/FirebaseFunctions";
 
 function SignIn() {
   const { currentUser } = useContext(AuthContext);
@@ -22,18 +22,18 @@ function SignIn() {
 
   const passwordReset = (event) => {
     event.preventDefault();
-    let email = document.getElementById('email').value;
+    let email = document.getElementById("email").value;
     if (email) {
       doPasswordReset(email);
-      alert('Password reset email was sent');
+      alert("Password reset email was sent");
     } else {
       alert(
-        'Please enter an email address below before you click the forgot password link'
+        "Please enter an email address below before you click the forgot password link"
       );
     }
   };
   if (currentUser) {
-    return <Redirect to="/" />;
+    return <Redirect to="/account" />;
   }
   return (
     <div>
@@ -72,7 +72,7 @@ function SignIn() {
       </form>
 
       <br />
-      {/* <SocialSignIn /> */}
+      <SocialSignIn />
     </div>
   );
 }
