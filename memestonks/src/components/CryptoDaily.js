@@ -32,26 +32,37 @@ const FinancialItem = () => {
   };
   const financialItem = useSelector((state) => state.cryptoDaily.financialItem);
   console.log("SELECTOR", financialItem);
-  return (
-    <div className="financial-item-big-wrapper">
-      <div>
+  if(financialItem && financialItem.errorMessage && financialItem.errorMessage==="error"){
+    return(
+      <div className="financial-item-big-wrapper">
+        <div>
         <CryptoSearch searchValue={searchValue} />
-        {financialItem ? (
-          <LineChart
-            color="red"
-            financialItem={financialItem}
-            financialItemName={financialItem.symbol}
-          />
-        ) : null}
+        <p className="error-message"> Data for this company does not exist or API calls exceeded. Please Try again after sometime! </p>
+        </div>
       </div>
-      <div>
-        <CryptoExchange searchValue={searchTerm} />
+    )
+  }else{
+    return (
+      <div className="financial-item-big-wrapper">
+        <div>
+          <CryptoSearch searchValue={searchValue} />
+          {financialItem ? (
+            <LineChart
+              color="red"
+              financialItem={financialItem}
+              financialItemName={financialItem.symbol}
+            />
+          ) : null}
+        </div>
+        <div>
+          <CryptoExchange searchValue={searchTerm} />
+        </div>
+        <div>
+          <CryptoHealth searchValue={searchTerm} />
+        </div>
       </div>
-      <div>
-        <CryptoHealth searchValue={searchTerm} />
-      </div>
-    </div>
-  );
+    );
+  }
 };
 
 const mapStateToProps = (state) => ({
