@@ -1,16 +1,16 @@
-import React, { useContext, useState } from 'react';
-import { Redirect } from 'react-router-dom';
-import { doCreateUserWithEmailAndPassword } from '../firebase/FirebaseFunctions';
-import { AuthContext } from '../firebase/Auth';
+import React, { useContext, useState } from "react";
+import { Redirect } from "react-router-dom";
+import { doCreateUserWithEmailAndPassword } from "../firebase/FirebaseFunctions";
+import { AuthContext } from "../firebase/Auth";
 // import SocialSignIn from './SocialSignIn';
 function SignUp() {
   const { currentUser } = useContext(AuthContext);
-  const [pwMatch, setPwMatch] = useState('');
+  const [pwMatch, setPwMatch] = useState("");
   const handleSignUp = async (e) => {
     e.preventDefault();
     const { displayName, email, passwordOne, passwordTwo } = e.target.elements;
     if (passwordOne.value !== passwordTwo.value) {
-      setPwMatch('Passwords do not match');
+      setPwMatch("Passwords do not match");
       return false;
     }
 
@@ -26,7 +26,7 @@ function SignUp() {
   };
 
   if (currentUser) {
-    return <Redirect to="/" />;
+    return <Redirect to="/account" />;
   }
 
   return (

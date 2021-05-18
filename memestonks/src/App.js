@@ -4,11 +4,13 @@ import Home from "./components/Home";
 import SignIn from "./components/SignIn";
 import SignUp from "./components/SignUp";
 import Account from "./components/Account";
+import Dashboard from "./components/Dashboard";
 import { AuthProvider } from "./firebase/Auth";
 import PrivateRoute from "./components/PrivateRoute";
 import About from "./components/aboutus";
 import Brokerage from "./components/Brokerage";
 import CryptoDaily from "./components/CryptoDaily";
+import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./store";
@@ -30,14 +32,14 @@ function App() {
               <Link className="stock-chart-link" to="/stock-chart">
                 Stock Charts
               </Link>
+              <Link className="crypto-chart-link" to="/crypto-chart">
+                Crypto Charts
+              </Link>
               <Link className="brokerage-link" to="/brokerage">
                 Brokerage Apps
               </Link>
               <Link className="about-link" to="/about">
                 About Us
-              </Link>
-              <Link className="crypto-chart-link" to="/crypto-chart">
-                Crypto Charts
               </Link>
             </header>
             <div className="App-body">
@@ -54,6 +56,7 @@ function App() {
                   component={CryptoDaily}
                 />
                 <PrivateRoute exact path="/account" component={Account} />
+                <PrivateRoute exact path="/dashboard" component={Dashboard} />
                 <Route exact path="/signin" component={SignIn} />
                 <Route exact path="/signup" component={SignUp} />
                 <Route exact path="/about" component={About} />

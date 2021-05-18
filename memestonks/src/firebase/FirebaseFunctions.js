@@ -1,4 +1,4 @@
-import firebase from 'firebase/app';
+import firebase from "firebase/app";
 
 async function doCreateUserWithEmailAndPassword(email, password, displayName) {
   await firebase.auth().createUserWithEmailAndPassword(email, password);
@@ -13,6 +13,13 @@ async function doChangePassword(email, oldPassword, newPassword) {
   await firebase.auth().currentUser.reauthenticateWithCredential(credential);
   await firebase.auth().currentUser.updatePassword(newPassword);
   await doSignOut();
+}
+
+async function doUpdateProfile(username, email) {
+  await firebase.auth().currentUser.updateProfile({
+    displayName: username,
+    email: email,
+  });
 }
 
 async function doSignInWithEmailAndPassword(email, password) {
@@ -39,15 +46,16 @@ async function doPasswordUpdate(password) {
 
 async function doSignOut() {
   await firebase.auth().signOut();
-  alert("Signed out")
+  alert("Signed out");
 }
 
 export {
   doCreateUserWithEmailAndPassword,
-//   doSocialSignIn,
+  //   doSocialSignIn,
+  doUpdateProfile,
   doSignInWithEmailAndPassword,
   doPasswordReset,
   doPasswordUpdate,
   doSignOut,
-  doChangePassword
+  doChangePassword,
 };
