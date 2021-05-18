@@ -32,18 +32,18 @@ function AddprofilePicture(props) {
   // const gm = require("gm");
   const { currentUser } = useContext(AuthContext);
   const [pwMatch, setPwMatch] = useState("");
-  // console.log(currentUser);
+  console.log(currentUser);
   console.log("props.username", props.username);
 
   const submitForm = async (event) => {
     event.preventDefault();
-    const { username, email, state, city, zip, profileImage } =
+    const { username, address, state, city, zip, profileImage } =
       event.target.elements;
     console.log("props.phone", profileImage.files[0].name);
     try {
       await doUpdateProfile(
-        username.value,
-        email.value
+        username.value
+        // address.value
         // phone.value.toString()
       );
       alert("Profile has been updated.");
@@ -128,12 +128,12 @@ function AddprofilePicture(props) {
                 />
               </Form.Group>
               <Form.Group>
-                <Form.Label>Email</Form.Label>
+                <Form.Label>Address</Form.Label>
                 <Form.Control
-                  type="email"
-                  id="email"
-                  name="email"
-                  defaultValue={currentUser.email}
+                  type="address"
+                  id="address"
+                  name="address"
+                  defaultValue={currentUser.gb}
                   required
                 />
               </Form.Group>

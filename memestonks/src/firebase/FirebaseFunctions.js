@@ -15,10 +15,10 @@ async function doChangePassword(email, oldPassword, newPassword) {
   await doSignOut();
 }
 
-async function doUpdateProfile(username, email) {
+async function doUpdateProfile(username) {
   await firebase.auth().currentUser.updateProfile({
     displayName: username,
-    email: email,
+    // h: address,
   });
 }
 
