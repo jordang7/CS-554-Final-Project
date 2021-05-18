@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { Redirect } from "react-router-dom";
 import { doCreateUserWithEmailAndPassword } from "../firebase/FirebaseFunctions";
 import { AuthContext } from "../firebase/Auth";
-// import SocialSignIn from './SocialSignIn';
+import SocialSignIn from "./SocialSignIn";
 function SignUp() {
   const { currentUser } = useContext(AuthContext);
   const [pwMatch, setPwMatch] = useState("");
@@ -88,7 +88,7 @@ function SignUp() {
         </button>
       </form>
       <br />
-      {/* <SocialSignIn /> */}
+      <SocialSignIn />
     </div>
   );
 }
