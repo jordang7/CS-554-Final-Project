@@ -127,7 +127,7 @@ function AddprofilePicture(props) {
                   defaultValue={currentUser.displayName}
                 />
               </Form.Group>
-              <Form.Group>
+              {/* <Form.Group>
                 <Form.Label>Address</Form.Label>
                 <Form.Control
                   type="address"
@@ -136,7 +136,7 @@ function AddprofilePicture(props) {
                   defaultValue={currentUser.gb}
                   required
                 />
-              </Form.Group>
+              </Form.Group> */}
               {/* <Form.Group as={Col} md="6">
                 <Form.Label>City</Form.Label>
                 <Form.Control
