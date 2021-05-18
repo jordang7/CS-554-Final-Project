@@ -498,7 +498,7 @@ app.get(
       });
       if (oldBinnedImage == null) {
         // console.log(companyName, userName);
-        const API_KEY = "9SEJV46K465GDV17";
+        const API_KEY = "B72KIC37FDER7YGS";
         try {
           await fetch(
             `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${companyName}&market=CNY&apikey=${API_KEY}`
@@ -543,23 +543,134 @@ app.get(
   }
 );
 
+app.get(
+  "/addCryptoToprofile/:userName/:companyName",
+  async function (req, res) {
+    try {
+      let companyName = req.params.companyName;
+      let userName = req.params.userName;
+
+      let newCompanyName = "";
+      let companySymbol = "";
+      let companyPriceArray = [];
+      let companyPrice = "";
+      console.log("crypto Company Name fired");
+      // let companyNameData = await client.smembersAsync(userName);
+      let oldBinnedImage = null;
+      let companyNameData = await client.smembersAsync(userName);
+      // console.log(companyNameData);
+      companyNameData.forEach((x) => {
+        let parseImages = JSON.parse(x);
+        if (parseImages.companySymbol == companyName) {
+          oldBinnedImage = x;
+        }
+      });
+
+      console.log("crypto Company Name fired1");
+      if (oldBinnedImage == null) {
+        console.log("crypto Company Name fired2");
+        // console.log(companyName, userName);
+        // const API_KEY = "9SEJV46K465GDV17";
+        const API_KEY = "B72KIC37FDER7YGS";
+        try {
+          await fetch(
+            `https://www.alphavantage.co/query?function=DIGITAL_CURRENCY_DAILY&symbol=${companyName}&market=CNY&apikey=${API_KEY}`
+          )
+            .then(function (response) {
+              return response.json();
+            })
+            .then(function (data) {
+              // res.json(data);
+              // console.log(data.data);
+              // console.log(data["Meta Data"]["Digital Currency Code"]);
+
+              newCompanyName = data["Meta Data"]["3. Digital Currency Name"];
+              companySymbol = data["Meta Data"]["2. Digital Currency Code"];
+              for (let key in data["Time Series (Digital Currency Daily)"]) {
+                companyPriceArray.push(
+                  data["Time Series (Digital Currency Daily)"][key][
+                    "4b. close (USD)"
+                  ]
+                );
+              }
+              companyPrice = companyPriceArray[0];
+            });
+        } catch (e) {
+          return e;
+        }
+        // console.log("newCompanyName", newCompanyName);
+        // console.log("companySymbol", companySymbol);
+        // console.log("companyPrice", companyPrice);
+        const profileStockData = {
+          companyName: newCompanyName,
+          companySymbol: companySymbol,
+          companyPrice: companyPrice,
+        };
+        await client.saddAsync(userName, JSON.stringify(profileStockData));
+        // const checkValue = await client.hexistAsync(userName, companyName);
+        // console.log(profileStockData);
+        res.json(profileStockData);
+      } else {
+        console.log("already cached binned");
+        // console.log(oldBinnedImage);
+        res.json(JSON.parse(oldBinnedImage));
+      }
+    } catch (e) {
+      console.log("error");
+      console.log(e);
+      res.json(e);
+    }
+  }
+);
+
 app.get("/checkStock/:userName/:companyName", async function (req, res) {
   try {
     let companyName = req.params.companyName;
     let userName = req.params.userName;
 
     console.log("check Company Name fired");
-    let oldBinnedImage = null;
+    let oldBinnedStockData = null;
     let companyNameData = await client.smembersAsync(userName);
     // console.log(companyNameData);
     companyNameData.forEach((x) => {
-      let parseImages = JSON.parse(x);
-      if (parseImages.companyName == companyName) {
-        oldBinnedImage = x;
+      let parseData = JSON.parse(x);
+      if (parseData.companyName == companyName) {
+        oldBinnedStockData = x;
       }
     });
-    res.json(JSON.parse(oldBinnedImage));
-    // if (oldBinnedImage == null) {
+    res.json(JSON.parse(oldBinnedStockData));
+    // if (oldBinnedStockData == null) {
+    //   console.log("false");
+    //   res.json({ buttonVaue: true });
+    // } else {
+    //   console.log("true");
+    //   res.json({ buttonVaue: false });
+    // }
+  } catch (e) {
+    console.log("error");
+    console.log(e);
+    res.json(e);
+  }
+});
+
+app.get("/checkCryptoStock/:userName/:companyName", async function (req, res) {
+  try {
+    let companyName = req.params.companyName;
+    let userName = req.params.userName;
+
+    console.log("check Company Name fired");
+    let oldBinnedStockData = null;
+    let companyNameData = await client.smembersAsync(userName);
+    // console.log(companyNameData);
+    companyNameData.forEach((x) => {
+      let parseData = JSON.parse(x);
+      if (parseData.companySymbol == companyName) {
+        oldBinnedStockData = x;
+      }
+    });
+    // console.log(oldBinnedStockData);
+    res.json(JSON.parse(oldBinnedStockData));
+    // if (oldBinnedStockData == null) {
     //   console.log("false");
     //   res.json({ buttonVaue: true });
     // } else {
@@ -575,27 +686,14 @@ app.get("/checkStock/:userName/:companyName", async function (req, res) {
 
 app.get("/checkStock/:userName/", async function (req, res) {
   try {
-    let companyName = req.params.companyName;
+    // let companyName = req.params.companyName;
     let userName = req.params.userName;
 
     console.log("check Company Name fired");
-    let oldBinnedImage = null;
+    // let oldBinnedImage = null;
     let companyNameData = await client.smembersAsync(userName);
-    console.log(companyNameData);
-    // companyNameData.forEach((x) => {
-    //   let parseImages = JSON.parse(x);
-    //   console.log(oldBinnedImage);
-    //   oldBinnedImage.push(parseImages);
-    // });
-    // console.log(oldBinnedImage);
+    // console.log(companyNameData);
     res.json(companyNameData);
-    // if (oldBinnedImage == null) {
-    //   console.log("false");
-    //   res.json({ buttonVaue: true });
-    // } else {
-    //   console.log("true");
-    //   res.json({ buttonVaue: false });
-    // }
   } catch (e) {
     console.log("error");
     console.log(e);
@@ -611,28 +709,29 @@ app.get(
       let userName = req.params.userName;
 
       console.log("Delete Company Name fired");
+      // console.log("companyName", companyName);
 
-      let oldUploadImage = null;
+      let oldUploadStockData = null;
       let companyNameData = await client.smembersAsync(userName);
 
       companyNameData.forEach((x) => {
-        let parsedImages = JSON.parse(x);
-        if (parsedImages.companyName == companyName) {
-          oldUploadImage = x;
+        let parsedData = JSON.parse(x);
+        if (parsedData.companySymbol == companyName) {
+          oldUploadStockData = x;
         }
       });
 
-      // console.log(oldUploadImage);
+      // console.log(oldUploadStockData);
 
-      if (oldUploadImage != null) {
+      if (oldUploadStockData != null) {
         // console.log("here1");
-        const asd = await client.sremAsync(userName, oldUploadImage);
+        const asd = await client.sremAsync(userName, oldUploadStockData);
         // console.log(asd);
         let newUploadData = null;
         let newCompanyNameData = await client.smembersAsync(userName);
         newCompanyNameData.forEach((x) => {
-          let parsedImages = JSON.parse(x);
-          if (parsedImages.companyName == companyName) {
+          let parsedData = JSON.parse(x);
+          if (parsedData.companySymbol == companyName) {
             newUploadData = x;
           }
         });
