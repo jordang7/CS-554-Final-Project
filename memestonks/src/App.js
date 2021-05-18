@@ -10,7 +10,6 @@ import PrivateRoute from "./components/PrivateRoute";
 import About from "./components/aboutus";
 import Brokerage from "./components/Brokerage";
 import CryptoDaily from "./components/CryptoDaily";
-import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./store";
