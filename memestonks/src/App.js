@@ -25,23 +25,23 @@ function App() {
       <Provider store={store}>
         <Router>
           <div className="App">
-            <header className="App-header">
-              <Link className="home-link" to="/">
+            <div className="sidenav">
+              <Link className="home-link item" to="/">
                 Home
               </Link>
-              <Link className="stock-chart-link" to="/stock-chart">
+              <Link className="stock-chart-link item" to="/stock-chart">
                 Stock Charts
               </Link>
-              <Link className="crypto-chart-link" to="/crypto-chart">
-                Crypto Charts
-              </Link>
-              <Link className="brokerage-link" to="/brokerage">
+              <Link className="brokerage-link item" to="/brokerage">
                 Brokerage Apps
               </Link>
-              <Link className="about-link" to="/about">
+              <Link className="about-link item" to="/about">
                 About Us
               </Link>
-            </header>
+              <Link className="crypto-chart-link item" to="/crypto-chart">
+                Crypto Charts
+              </Link>
+            </div>
             <div className="App-body">
               <Switch>
                 <Route exact path="/" component={Home} />
