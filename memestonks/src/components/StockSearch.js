@@ -14,6 +14,7 @@ const StockSearch = (props) => {
             <Autocomplete
                 id="combo-box-demo"
                 options={ [
+                    { ticker: 'DUMMY', name: "DUMMY" },
                     { ticker: 'GME', name: "GameStop" },
                     { ticker: 'PLTR', name: "Palantir Technologies" },
                     { ticker: 'CLOV', name: "Clover Health Investments" },

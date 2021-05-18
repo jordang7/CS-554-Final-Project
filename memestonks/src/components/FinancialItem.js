@@ -7,7 +7,7 @@ import StockSearch from "./StockSearch";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import Overview from "./Overview";
-
+import '../App.css'
 const FinancialItem = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const dispatch = useDispatch();
@@ -33,23 +33,36 @@ const FinancialItem = () => {
     (state) => state.financialItem.financialItem
   );
   console.log("SELECTOR", financialItem);
-  return (
-    <div className="financial-item-big-wrapper">
-      <div>
-        <StockSearch searchValue={searchValue} />
-        {financialItem ? (
-          <LineChart
-            color="blue"
-            financialItem={financialItem}
-            financialItemName={financialItem.symbol}
-          />
-        ) : null}
+  if(financialItem && financialItem.errorMessage && financialItem.errorMessage==="error"){
+    return (
+      <div className="financial-item-big-wrapper">
+        <div>
+          <StockSearch searchValue={searchValue} />
+          <p className="error-message"> Data for this company does not exist or API calls exceeded. Please Try again after sometime! </p>
+        </div>
       </div>
-      <div>
-        <Overview searchValue={searchTerm} />
+    );
+  }else{
+    return (
+      <div className="financial-item-big-wrapper">
+        <div>
+          <StockSearch searchValue={searchValue} />
+          <br/>
+          {financialItem ? (
+            <LineChart
+              color="blue"
+              financialItem={financialItem}
+              financialItemName={financialItem.symbol}
+            />
+          ) : null}
+        </div>
+        <div>
+          <Overview searchValue={searchTerm} />
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
+  
 };
 
 // FinancialItem.propTypes = {

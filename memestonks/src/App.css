@@ -33,6 +33,10 @@ body{
   color: #5f5ffc;
 }
 
+.error-message{
+  color: red
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
