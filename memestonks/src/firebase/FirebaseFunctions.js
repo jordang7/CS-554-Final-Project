@@ -42,19 +42,9 @@ async function doUpdateProfile(
   });
 
   await firebase.auth().currentUser.updateProfile({ displayName: username });
-  // firebase.auth().currentUser.updateProfile({ photoURL: null });
-  // if (image.name != oldImage) {
-  // await storage
-  //   .ref("images/" + uid)
-  //   .child(oldImage)
-  //   .delete();
-  await storage.ref(`images/${uid}/profileImage`).put(image);
-  // firebase.auth().currentUser.updateProfile({ photoURL: null });
-  // }
-  // await firebase.auth().currentUser.updateProfile({
-  //   displayName: username,
-  //   // h: address,
-  // });
+  if (image != "") {
+    await storage.ref(`images/${uid}/profileImage`).put(image);
+  }
 }
 
 async function doSignInWithEmailAndPassword(email, password) {

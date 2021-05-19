@@ -3,10 +3,12 @@ import { AuthContext } from "../firebase/Auth";
 import { doChangePassword } from "../firebase/FirebaseFunctions";
 import "../App.css";
 
+import { Button } from "react-bootstrap";
+
 function ChangePassword() {
   const { currentUser } = useContext(AuthContext);
   const [pwMatch, setPwMatch] = useState("");
-  console.log(currentUser);
+  // console.log(currentUser);
 
   const submitForm = async (event) => {
     event.preventDefault();
@@ -75,8 +77,8 @@ function ChangePassword() {
               />
             </label>
           </div>
-
-          <button type="submit">Change Password</button>
+          <br></br>
+          <Button type="submit">Change Password</Button>
         </form>
         <br />
       </div>
