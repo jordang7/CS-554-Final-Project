@@ -19,7 +19,7 @@ import CryptoMonthly from "./components/CryptoMonthly";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./store";
-
+import "bootstrap/dist/css/bootstrap.min.css";
 const defaultPath = () => {
   return(
   <h1>Page not found</h1>

@@ -16,8 +16,8 @@ function Account() {
       </div>
       {/* <h2>Account Page</h2> */}
       <AddProfilePicture username={currentUser.email} />
+      <br></br>
       <ChangePassword />
-      <SignOutButton />
     </div>
   );
 }
