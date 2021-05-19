@@ -16,6 +16,9 @@ const CryptoSearch = (props) => {
         options={[
           { ticker: "BTC", name: "Bitcoin" },
           { ticker: "ETH", name: "Ethereum" },
+          { ticker: "ADA", name: "Cardano" },
+          { ticker: "DOGE", name: "Doge Coin" },
+          { ticker: "SHIB", name: "Shiba INU" },
         ]}
         getOptionLabel={(option) => option.name}
         style={{ width: 300 }}

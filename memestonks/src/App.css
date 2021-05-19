@@ -29,6 +29,7 @@ body {
 .stock-chart-link,
 .about-link,
 .brokerage-link,
+.dashboard-link,
 .crypto-chart-link {
   /* margin: 25px; */
   padding: 0.4rem 0.8rem;
@@ -94,4 +95,29 @@ body {
   .sidenav a {
     font-size: 18px;
   }
+}
+
+.flatnav .item {
+  padding: 6px 6px 6px 6px;
+  text-decoration: none;
+  font-size: 15px;
+  color: white;
+  display: block;
+}
+
+.flatnav .item:hover {
+  color: #f1f1f1;
+}
+
+.daily,
+.weekly,
+.monthly {
+  /* margin: 25px; */
+  padding: 0.4rem 0.8rem;
+  background-color: #111;
+  border-radius: 3px;
+  color: white;
+  display: inline-block;
+  text-decoration: none !important;
+  margin: 5px;
 }

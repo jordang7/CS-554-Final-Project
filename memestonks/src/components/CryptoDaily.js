@@ -8,6 +8,7 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import CryptoHealth from "./CryptoHealth";
 import CryptoExchange from "./CryptoExchange";
+import CryptoNavApi from "./CryptoNavApi";
 
 const FinancialItem = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -32,26 +33,46 @@ const FinancialItem = () => {
   };
   const financialItem = useSelector((state) => state.cryptoDaily.financialItem);
   console.log("SELECTOR", financialItem);
-  return (
-    <div className="financial-item-big-wrapper">
-      <div>
-        <CryptoSearch searchValue={searchValue} />
-        {financialItem ? (
-          <LineChart
-            color="red"
-            financialItem={financialItem}
-            financialItemName={financialItem.symbol}
-          />
-        ) : null}
+  if (
+    financialItem &&
+    financialItem.errorMessage &&
+    financialItem.errorMessage === "error"
+  ) {
+    return (
+      <div className="financial-item-big-wrapper">
+        <div>
+          <CryptoSearch searchValue={searchValue} />
+          <p className="error-message">
+            {" "}
+            Data for this company does not exist or API calls exceeded. Please
+            Try again after sometime!{" "}
+          </p>
+        </div>
       </div>
-      <div>
-        <CryptoExchange searchValue={searchTerm} />
+    );
+  } else {
+    return (
+      <div className="financial-item-big-wrapper">
+        <CryptoNavApi />
+        <div>
+          <CryptoSearch searchValue={searchValue} />
+          {financialItem ? (
+            <LineChart
+              color="red"
+              financialItem={financialItem}
+              financialItemName={financialItem.symbol}
+            />
+          ) : null}
+        </div>
+        <div>
+          <CryptoExchange searchValue={searchTerm} />
+        </div>
+        <div>
+          <CryptoHealth searchValue={searchTerm} />
+        </div>
       </div>
-      <div>
-        <CryptoHealth searchValue={searchTerm} />
-      </div>
-    </div>
-  );
+    );
+  }
 };
 
 const mapStateToProps = (state) => ({
