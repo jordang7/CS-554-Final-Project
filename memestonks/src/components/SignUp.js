@@ -3,6 +3,9 @@ import { Redirect } from "react-router-dom";
 import { doCreateUserWithEmailAndPassword } from "../firebase/FirebaseFunctions";
 import { AuthContext } from "../firebase/Auth";
 import SocialSignIn from "./SocialSignIn";
+import {
+  Link
+} from "react-router-dom";
 import '../App.css'
 function SignUp() {
   const { currentUser } = useContext(AuthContext);
@@ -90,6 +93,9 @@ function SignUp() {
       </form>
       <br />
       <SocialSignIn />
+      <br />
+      <p>or</p>
+      <Link className="btn btn-dark"to="/signin">Sign in!</Link>
     </div>
   );
 }

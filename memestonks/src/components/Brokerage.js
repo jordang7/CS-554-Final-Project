@@ -4,7 +4,7 @@ function Root() {
   return (
     <div className="page">
       <h1 className="title">
-          Brokerages explained
+          Which Brokerage is right for you?
         </h1>
       <div className="container">
         <nav id="toc" data-toggle="toc">
@@ -55,8 +55,8 @@ function Root() {
         </nav>
       </div>
       <div id="commissions_brokerages">
-        <h1>Commissions Brokerages</h1>
-        <h2 id="tdameritrade">TDAmeritrade</h2>
+        <h2>Commissions Brokerages</h2>
+        <h3 id="tdameritrade">TDAmeritrade</h3>
         <p>
           ThinkOrSwim is the all-around best stock/options/forex/futures
           platform. It has issues but it also has a lot of features and is used
@@ -65,7 +65,7 @@ function Root() {
           considered to be the best. At least a few times a year there will be
           data outages during trading hours on ThinkOrSwim.
         </p>
-        <h2 id="Ninjatrader7/8*">Ninjatrader 7/8*</h2>
+        <h3 id="Ninjatrader7/8*">Ninjatrader 7/8*</h3>
         <p>
           Ninjatrader 8 is a great platform for trading futures. The Ninjatrader
           site gives you a choice of two different futures brokerages which are
@@ -78,48 +78,48 @@ function Root() {
           and stocks, but the free/lease licenses are sufficient for futures
           trading depending on the features you need.
         </p>
-        <h2 id="Tastyworks">Tastyworks</h2>
+        <h3 id="Tastyworks">Tastyworks</h3>
         <p>
           Lowest trading fees of all the commissions-having brokerages. The
           charts are crap and there is no tick data but a lot of people like it
           for executing trades due to the low fees.
         </p>
-        <h2 id="AMP">AMP</h2>
+        <h3 id="AMP">AMP</h3>
         <p>
           The Walmart of futures trading. It's got a bunch of platforms you can
           choose from and some of the lowest commissions. I've traded with it.
           It's not bad. Most of the platforms they offer are garbage but the
           TT-Web trading platform is pretty good.
         </p>
-        <h2 id="interactivebrokers">Interactive Brokers</h2>
+        <h3 id="interactivebrokers">Interactive Brokers</h3>
         <p>
           Probably one of the worst interfaces but it has low fees and a lot of
           people swear by it.
         </p>
       </div>
       <div id="NO_commissions_brokerages">
-        <h1>No Commissions Brokerages</h1>
-        <h2 id="Robinhood">Robinhood</h2>
+        <h2>No Commissions Brokerages</h2>
+        <h3 id="Robinhood">Robinhood</h3>
         <p>
           (Because of the Gamestop and crypocurrency fiascos, Robinhood has lost
           significant respect amongst wallstreebets users) Robinhood is the
           original no-fee brokerage. They now offer options as well as long-only
           stock trades. They have a phone client and a new PC interface.
         </p>
-        <h2 id="Fidelity">Fidelity</h2>
+        <h3 id="Fidelity">Fidelity</h3>
         <p>
           As Robinhood lost respect and its users for not allowing trading on
           some of the most popular meme stocks(GME,AMC,etc), Fidelity was the
           brokerage that gained the most users and respect. It is now one of the
           top choices of wallstreetbets users.
         </p>
-        <h2 id="Alpaca">Alpaca</h2>
+        <h3 id="Alpaca">Alpaca</h3>
         <p>
           Alpaca is a no-fee algo-trading brokerage that is in early access. I
           don't have a whole lot of information about it but I'm interested to
           see what people do with the free market data API.
         </p>
-        <h2 id="Oanda">Oanda</h2>
+        <h3 id="Oanda">Oanda</h3>
         <p>
           Technically free forex brokerage, you just pay spread. TD has that too
           though.

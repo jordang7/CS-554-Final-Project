@@ -9,28 +9,8 @@ import { findRenderedDOMComponentWithClass } from "react-dom/cjs/react-dom-test-
 function Root() {
     return (
         <div>
-            <img src={logo} alt="logo" className="logo" /> 
-                <div className="homepage-links">
-                <fieldset className="fieldsets">
-                    <legend> Explore </legend>
-                    <br/>
-                    <div>
-                        <Link to="/stock-chart">Click here for real time stock prices</Link>
-                    </div>
-                    <br />
-                    <div>
-                        <Link to="/signin">Click here to Sign in!</Link>
-                    </div>
-                    <br />
-                    <div>
-                        <Link to="/signup">Click here to Sign Up!</Link>
-                    </div>
-                    <br />
-            </fieldset>
-            </div>
+            <img src={logo} alt="logo" className="logo" />
             <div>
-                <br />
-                <br />
                 <div className="description">
                     <p> A meme stock is a stock that has seen an increase in volume not because of the
                     company’s performance, but rather because of hype on social media and online forums like Reddit. </p>
@@ -41,6 +21,22 @@ function Root() {
                 </p>
                 </div>
             </div>
+                <div className="homepage-links">
+                <fieldset className="fieldsets">
+                    <br/>
+                    <div>
+                        <p>Already have an account?</p>
+                        <Link className="btn btn-dark"to="/signin">Sign in!</Link>
+                    </div>
+                    <br />
+                    <div>
+                        <p>Don't have an account?</p>
+                        <Link className="btn btn-dark"to="/signup">Sign Up!</Link>
+                    </div>
+                    <br />
+            </fieldset>
+            </div>
+
         </div>
     );
 }

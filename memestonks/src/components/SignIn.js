@@ -6,7 +6,9 @@ import {
   doSignInWithEmailAndPassword,
   doPasswordReset,
 } from "../firebase/FirebaseFunctions";
-
+import {
+  Link
+} from "react-router-dom";
 function SignIn() {
   const { currentUser } = useContext(AuthContext);
   const handleLogin = async (event) => {
@@ -67,7 +69,7 @@ function SignIn() {
         </div>
         <br/>
         <button type="submit">Log in</button>
-        &nbsp;&nbsp;&nbsp; 
+        &nbsp;&nbsp;&nbsp;
         <button className="forgotPassword" onClick={passwordReset}>
           Forgot Password
         </button>
@@ -75,6 +77,9 @@ function SignIn() {
 
       <br />
       <SocialSignIn />
+      <br />
+      <p>or</p>
+      <Link className="btn btn-dark"to="/signup">Sign Up!</Link>
     </div>
   );
 }
