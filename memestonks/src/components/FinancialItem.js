@@ -51,7 +51,7 @@ const FinancialItem = () => {
         </div>
       </div>
     );
-  } else {
+  }
     return (
       <div className="financial-item-big-wrapper">
         <NavApi />
@@ -64,16 +64,18 @@ const FinancialItem = () => {
               color="blue"
               financialItem={financialItem}
               financialItemName={financialItem.symbol}
+              duration={"Daily chart"}
             />
           ) : null}
         </div>
         <div>
-          <Overview searchValue={searchTerm} />
+          {
+            searchTerm ? 
+            <Overview searchValue={searchTerm} /> : null}
         </div>
       </div>
     );
   }
-};
 
 // FinancialItem.propTypes = {
 //     financialItem: PropTypes.object.isRequired,

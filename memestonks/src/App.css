@@ -1,9 +1,12 @@
-body {
-  background-color: #333333;
-}
-
 .App {
   text-align: center;
+}
+body{
+  list-style-type: none;
+}
+
+.overview-list{
+  list-style-type: none;
 }
 
 .App-logo {
@@ -25,6 +28,8 @@ body {
   color: black;
 }
 
+.account-link,
+.signout,
 .home-link,
 .stock-chart-link,
 .about-link,
@@ -76,12 +81,12 @@ body {
   padding: 6px 6px 6px 6px;
   text-decoration: none;
   font-size: 15px;
-  color: #818181;
+  color: #767676;
   display: block;
 }
 
 .sidenav .item:hover {
-  color: #f1f1f1;
+  color: #e70f0f;
 }
 
 .App-body {
@@ -113,11 +118,11 @@ body {
 .weekly,
 .monthly {
   /* margin: 25px; */
+  width: 100px;
   padding: 0.4rem 0.8rem;
-  background-color: #111;
+  background-color: black;
   border-radius: 3px;
-  color: white;
-  display: inline-block;
+  color: #861e1e;
   text-decoration: none !important;
   margin: 5px;
 }

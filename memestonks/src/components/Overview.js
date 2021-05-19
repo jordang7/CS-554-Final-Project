@@ -6,17 +6,8 @@ import { getFinOverview } from "../actions/overview";
 import { useSelector, useDispatch } from "react-redux";
 import { AuthContext } from "../firebase/Auth";
 import { Divider } from "@material-ui/core";
+import '../App.css'
 import {
-  TableContainer,
-  Table,
-  TableHead,
-  TableRow,
-  TableCell,
-  Paper,
-  TableBody,
-  // StyledTableRow,
-  withStyles,
-  Container,
   Button,
 } from "@material-ui/core";
 const axios = require("axios");
@@ -162,7 +153,7 @@ const FinancialOverview = (props) => {
           {finOverview.DividendYield}, 52 week High :{" "}
           {finOverview["52WeekHigh"]}, 52 week Low : {finOverview["52WeekLow"]}
         </p>
-        <ul>
+        <ul className="overview-list">
           <li>
             <h2>Asset Type</h2>
             <p>{finOverview.AssetType}</p>

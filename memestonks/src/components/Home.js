@@ -4,23 +4,29 @@ import '../css/home.css'
 import {
     Link
 } from "react-router-dom";
+import logo from '../css/images/logo_meme.png'
+import { findRenderedDOMComponentWithClass } from "react-dom/cjs/react-dom-test-utils.development";
 function Root() {
     return (
         <div>
-            <h1 className="title">MEMESTONKS</h1>
-            <div className="homepage-links">
-            <div>
-                <Link to="/stock-chart">Click here for real time stock prices</Link>
-            </div>
-            <br />
-            <div>
-                <Link to="/signin">Click here to Sign in!</Link>
-            </div>
-            <br />
-            <div>
-                <Link to="/signup">Click here to Sign Up!</Link>
-            </div>
-            <br />
+            <img src={logo} alt="logo" className="logo" /> 
+                <div className="homepage-links">
+                <fieldset className="fieldsets">
+                    <legend> Explore </legend>
+                    <br/>
+                    <div>
+                        <Link to="/stock-chart">Click here for real time stock prices</Link>
+                    </div>
+                    <br />
+                    <div>
+                        <Link to="/signin">Click here to Sign in!</Link>
+                    </div>
+                    <br />
+                    <div>
+                        <Link to="/signup">Click here to Sign Up!</Link>
+                    </div>
+                    <br />
+            </fieldset>
             </div>
             <div>
                 <br />
@@ -35,8 +41,6 @@ function Root() {
                 </p>
                 </div>
             </div>
-
-            <SignOut />
         </div>
     );
 }
