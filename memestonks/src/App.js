@@ -21,7 +21,9 @@ import { Provider } from "react-redux";
 import store from "./store";
 
 const defaultPath = () => {
-  <h1>Page not found</h1>;
+  return(
+  <h1>Page not found</h1>
+  );
 };
 
 function App() {
