@@ -12,6 +12,7 @@ import { AuthProvider } from "./firebase/Auth";
 import PrivateRoute from "./components/PrivateRoute";
 import About from "./components/aboutus";
 import Brokerage from "./components/Brokerage";
+import Signout from './components/SignOut'
 import CryptoDaily from "./components/CryptoDaily";
 import CryptoWeekly from "./components/CryptoWeekly";
 import CryptoMonthly from "./components/CryptoMonthly";
@@ -38,9 +39,12 @@ function App() {
               </Link>
               <Link className="crypto-chart-link item" to="/crypto-chart">
                 Crypto Charts
-              </Link>
+              </Link>             
               <Link className="dashboard-link item" to="/dashboard">
                 My Dashboard
+              </Link>
+              <Link className="account-link item" to="/account">
+                Account
               </Link>
               <Link className="brokerage-link item" to="/brokerage">
                 Brokerage Apps
@@ -48,6 +52,12 @@ function App() {
               <Link className="about-link item" to="/about">
                 About Us
               </Link>
+              <br/>
+              <br/>
+              {/* <Link className="signout item" to="/signout">
+                Sign out
+              </Link> */}
+              <Signout/>
             </div>
             <div className="App-body">
               <Switch>
@@ -88,6 +98,7 @@ function App() {
                 <Route exact path="/signup" component={SignUp} />
                 <Route exact path="/about" component={About} />
                 <Route exact path="/brokerage" component={Brokerage} />
+                <Route exact path="/signout" component={Signout} />
                 <Route component={defaultPath} />
               </Switch>
             </div>

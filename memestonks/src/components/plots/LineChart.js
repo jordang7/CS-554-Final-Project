@@ -2,8 +2,10 @@ import React,{Fragment} from 'react';
 import PropTypes from 'prop-types'
 import Plot from 'react-plotly.js';
 
-const LineChart = ({financialItem,financialItemName,color}) => {
+const LineChart = ({financialItem,financialItemName,color, duration}) => {
     return (
+        <div>
+            <h1> {duration} </h1>
         <Fragment>
             <Plot
                 data={[
@@ -19,6 +21,7 @@ const LineChart = ({financialItem,financialItemName,color}) => {
                 options ={ {displaylogo: 'false'} }
             />
         </Fragment>
+        </div>
     );
 };
 

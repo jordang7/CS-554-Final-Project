@@ -3,6 +3,7 @@ import { Redirect } from "react-router-dom";
 import { doCreateUserWithEmailAndPassword } from "../firebase/FirebaseFunctions";
 import { AuthContext } from "../firebase/Auth";
 import SocialSignIn from "./SocialSignIn";
+import '../App.css'
 function SignUp() {
   const { currentUser } = useContext(AuthContext);
   const [pwMatch, setPwMatch] = useState("");
@@ -45,7 +46,7 @@ function SignUp() {
               placeholder="Name"
             />
           </label>
-        </div>
+        </div><br/>
         <div className="form-group">
           <label>
             Email:
@@ -57,7 +58,7 @@ function SignUp() {
               placeholder="Email"
             />
           </label>
-        </div>
+        </div><br/>
         <div className="form-group">
           <label>
             Password:
@@ -70,7 +71,7 @@ function SignUp() {
               required
             />
           </label>
-        </div>
+        </div><br/>
         <div className="form-group">
           <label>
             Confirm Password:
@@ -82,7 +83,7 @@ function SignUp() {
               required
             />
           </label>
-        </div>
+        </div><br/>
         <button id="submitButton" name="submitButton" type="submit">
           Sign Up
         </button>

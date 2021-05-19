@@ -66,11 +66,14 @@ const FinancialItem = () => {
               color="blue"
               financialItem={financialItem}
               financialItemName={financialItem.symbol}
+              duration={"Monthly chart"}
             />
           ) : null}
         </div>
         <div>
-          <Overview searchValue={searchTerm} />
+        {
+            searchTerm ? 
+            <Overview searchValue={searchTerm} /> : null}
         </div>
       </div>
     );

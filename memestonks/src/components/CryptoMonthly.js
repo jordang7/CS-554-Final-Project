@@ -63,14 +63,18 @@ const FinancialItem = () => {
               color="red"
               financialItem={financialItem}
               financialItemName={financialItem.symbol}
+              duration={"Monthly chart"}
             />
           ) : null}
         </div>
         <div>
-          <CryptoExchange searchValue={searchTerm} />
+          { searchTerm ?
+          <CryptoExchange searchValue={searchTerm} /> : null}
         </div>
         <div>
-          <CryptoHealth searchValue={searchTerm} />
+        {
+            searchTerm ?            
+          <CryptoHealth searchValue={searchTerm} />: null}
         </div>
       </div>
     );

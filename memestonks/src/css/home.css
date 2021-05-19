@@ -1,17 +1,14 @@
-@import url('https://fonts.googleapis.com/css?family=Permanent+Marker');
-
-h1.title{
-    letter-spacing: 7px;
-    font-size: 60px;
-    font-family: 'Permanent Marker', sans-serif;
-    background: -webkit-linear-gradient(#eee, #111);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+.logo{
+    width: 250px
 }
 .description{
-    color: white
+    color: black
 }
 
 a{
-    color: #8f8fff;
+    color: black;
+}
+
+a:hover{
+    color: rgb(102, 179, 58)
 }
