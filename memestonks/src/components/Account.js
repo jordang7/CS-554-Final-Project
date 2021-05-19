@@ -12,7 +12,7 @@ function Account() {
   return (
     <div>
       <div className="heading-name">
-        <h2>Account Page</h2>
+        <h1>Account Page</h1>
       </div>
       {/* <h2>Account Page</h2> */}
       <AddProfilePicture username={currentUser.email} />
