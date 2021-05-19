@@ -12,9 +12,6 @@ function Root() {
                 Our Team </h2>
                 <ul>
                     <li>
-                        <spa></spa>
-                    </li>
-                    <li>
                         Jordan Greenberg
                     </li>
                     <li>

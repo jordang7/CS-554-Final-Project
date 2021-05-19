@@ -1,11 +1,12 @@
 import React from "react";
 import "../css/brokerage.css";
-import bootstrap from "bootstrap";
 function Root() {
   return (
     <div className="page">
+      <h1 className="title">
+          Brokerages explained
+        </h1>
       <div className="container">
-        <p className="table">Table of Contents</p>
         <nav id="toc" data-toggle="toc">
           <ul className="no-bullets">
             <li className="head">

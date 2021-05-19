@@ -120,7 +120,7 @@ function AddprofilePicture() {
 
   return (
     <div>
-      <Container>
+      <Container className="container">
         <Row className="border border-dark profile-box">
           <Col>
             <img className="img-size" src={uploadImage} alt="profile pic" />
