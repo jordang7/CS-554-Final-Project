@@ -1,5 +1,5 @@
-body{
-  background-color: #333333;
+body {
+  /* background-color: #333333; */
 }
 
 .App {
@@ -25,12 +25,18 @@ body{
   color: black;
 }
 
-.home-link, .stock-chart-link, .about-link{
+.home-link,
+.stock-chart-link,
+.about-link {
   margin: 25px;
 }
 
 .App-link {
   color: #5f5ffc;
+}
+
+.error-message {
+  color: red;
 }
 
 @keyframes App-logo-spin {
@@ -39,5 +45,45 @@ body{
   }
   to {
     transform: rotate(360deg);
+  }
+}
+.center {
+  padding: 30px;
+}
+
+.sidenav {
+  height: 100%;
+  width: 150px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+.sidenav .item {
+  padding: 6px 6px 6px 6px;
+  text-decoration: none;
+  font-size: 15px;
+  color: #818181;
+  display: block;
+}
+
+.sidenav .item:hover {
+  color: #f1f1f1;
+}
+
+.App-body {
+  margin-left: 150px; /* Same as the width of the sidenav */
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {
+    padding-top: 15px;
+  }
+  .sidenav a {
+    font-size: 18px;
   }
 }

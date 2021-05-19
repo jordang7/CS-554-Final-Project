@@ -1,45 +1,87 @@
-import React, { useContext, useState } from "react";
+import React, { useEffect, useContext, useState } from "react";
 import { AuthContext } from "../firebase/Auth";
-import { doUpdateUserProfile } from "../firebase/FirebaseFunctions";
+import firebase from "firebase/app";
+import "firebase/firestore";
+import {
+  doUpdateUserProfile,
+  doUpdateProfile,
+} from "../firebase/FirebaseFunctions";
 // import SignOutButton from "./SignOut";
 // import "../App.css";
 // import ChangePassword from "./ChangePassword";
 import image_not_available from "../css/image_not_available.jpeg";
 import "../css/account.css";
-import {
-  Typography,
-  TextField,
-  FormControlLabel,
-  Checkbox,
-  makeStyles,
-  //   Button,
-  Grid,
-  // Link,
-  // Box,
-  // Copyright,
-} from "@material-ui/core";
+// const firebase = require("firebase");
+// import {
+//   Typography,
+//   TextField,
+//   FormControlLabel,
+//   Checkbox,
+//   makeStyles,
+//   //   Button,
+//   Grid,
+//   // Link,
+//   // Box,
+//   // Copyright,
+// } from "@material-ui/core";
 
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 
-function AddprofilePicture() {
+var firestore = firebase.firestore();
+
+function AddprofilePicture(props) {
+  // const fs = require("fs");
+  // const cp = require("child_process");
+  // var { spawn } = require("child_process");
+  // var im = require("imagemagick");
+  // const gm = require("gm");
   const { currentUser } = useContext(AuthContext);
+
+  const docRef = firestore.doc("users/" + currentUser.uid);
+  const [myFireBaseData, setMyFireBaseData] = useState(undefined);
+
+  // console.log("docRef.get()", docRef.get());
+
   const [pwMatch, setPwMatch] = useState("");
-  console.log(currentUser);
+  // console.log(currentUser);
+  // console.log("props.username", props.username);
+
+  useEffect(() => {
+    console.log("overview Use effect fired");
+    async function fetchData() {
+      console.log("overview Use effect fired");
+      try {
+        await docRef.get().then((doc) => {
+          if (doc && doc.exists) {
+            setMyFireBaseData(doc.data());
+          }
+        });
+        // console.log("data", data.data());
+        console.log("data", myFireBaseData);
+      } catch (e) {
+        console.log(e);
+      }
+    }
+    // if (props.searchValue != null) {
+    //   console.log("searchTerm is set");
+    fetchData();
+    // }
+  }, []);
 
   const submitForm = async (event) => {
     event.preventDefault();
-    const { username, email, profileImage } = event.target.elements;
-
-    // if (newPasswordOne.value !== newPasswordTwo.value) {
-    //   setPwMatch("New Passwords do not match, please try again");
-    //   return false;
-    // }
-
+    const { username, address, city, state, zip, profileImage } =
+      event.target.elements;
+    console.log("props.phone", profileImage.files[0].name);
     try {
-      await doUpdateUserProfile(
+      await doUpdateProfile(
+        currentUser.uid,
         username.value,
-        email.value,
-        profileImage.value
+        address.value,
+        city.value,
+        state.value,
+        zip.value
+        // phone.value.toString()
       );
       alert("Profile has been updated.");
     } catch (error) {
@@ -84,12 +126,62 @@ function AddprofilePicture() {
               {/* <p>{this.state.msg}</p> */}
               <Form.Group controlId="formCategory1">
                 <Form.Label>Username</Form.Label>
-                <Form.Control type="text" name="username" required />
+                <Form.Control
+                  type="text"
+                  id="username"
+                  name="username"
+                  required
+                  defaultValue={myFireBaseData.userDisplayName}
+                />
               </Form.Group>
-              <Form.Group controlId="formCategory2">
-                <Form.Label>Email</Form.Label>
-                <Form.Control type="email" name="email" required />
+              <Form.Group>
+                <Form.Label>Address</Form.Label>
+                <Form.Control
+                  type="address"
+                  id="address"
+                  name="address"
+                  // defaultValue={myFireBaseData.userAddress}
+                  required
+                />
               </Form.Group>
+              <Form.Group as={Col} md="6">
+                <Form.Label>City</Form.Label>
+                <Form.Control
+                  type="text"
+                  id="city"
+                  name="city"
+                  placeholder="City"
+                />
+              </Form.Group>
+              <Form.Group as={Col} md="4">
+                <Form.Label>State</Form.Label>
+                <Form.Control
+                  type="text"
+                  id="state"
+                  name="state"
+                  placeholder="State"
+                />
+              </Form.Group>
+              <Form.Group as={Col} md="4">
+                <Form.Label>Zip</Form.Label>
+                <Form.Control
+                  id="zip"
+                  name="zip"
+                  type="text"
+                  inputmode="numeric"
+                  pattern="[0-9]{5}"
+                  placeholder="Zip (input ex: 02302)"
+                />
+              </Form.Group>
+              {/* <Form.Group controlId="formCategory2">
+                <Form.Label>Phone</Form.Label>
+                <Form.Control
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  defaultValue={currentUser.phoneNumber}
+                />
+              </Form.Group> */}
 
               <Form.Group controlId="formCategory4">
                 <Form.Label>Profile Image</Form.Label>

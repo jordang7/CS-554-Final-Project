@@ -1,4 +1,9 @@
-import firebase from 'firebase/app';
+import firebase from "firebase/app";
+import "firebase/firestore";
+// import { AuthContext } from "../firebase/Auth";
+
+var firestore = firebase.firestore();
+// const docRef = firestore.doc("users/"+)
 
 async function doCreateUserWithEmailAndPassword(email, password, displayName) {
   await firebase.auth().createUserWithEmailAndPassword(email, password);
@@ -13,6 +18,21 @@ async function doChangePassword(email, oldPassword, newPassword) {
   await firebase.auth().currentUser.reauthenticateWithCredential(credential);
   await firebase.auth().currentUser.updatePassword(newPassword);
   await doSignOut();
+}
+
+async function doUpdateProfile(uid, username, address, city, state, zip) {
+  const docRef = firestore.doc("users/" + uid);
+  await docRef.set({
+    userDisplayName: username,
+    userAddress: address,
+    userCity: city,
+    userState: state,
+    userZip: zip,
+  });
+  // await firebase.auth().currentUser.updateProfile({
+  //   displayName: username,
+  //   // h: address,
+  // });
 }
 
 async function doSignInWithEmailAndPassword(email, password) {
@@ -39,15 +59,16 @@ async function doPasswordUpdate(password) {
 
 async function doSignOut() {
   await firebase.auth().signOut();
-  alert("Signed out")
+  alert("Signed out");
 }
 
 export {
   doCreateUserWithEmailAndPassword,
-//   doSocialSignIn,
+  //   doSocialSignIn,
   doSignInWithEmailAndPassword,
+  doUpdateProfile,
   doPasswordReset,
   doPasswordUpdate,
   doSignOut,
-  doChangePassword
+  doChangePassword,
 };
