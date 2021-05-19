@@ -112,6 +112,7 @@ function AddprofilePicture() {
         currentUser.photoURL
       );
       alert("Profile has been updated.");
+      window.location.reload(false);
     } catch (error) {
       alert(error);
     }

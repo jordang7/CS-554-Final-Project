@@ -159,14 +159,14 @@ const FinancialOverview = (props) => {
             <p>{finOverview.AssetType}</p>
           </li>
           <li>
+            <h2>About the Company </h2>
             <p>
-              <h2>About the Company </h2>
               {finOverview.Description}
             </p>
           </li>
           <li>
+          <h2>Sector </h2>
             <p>
-              <h2>Sector </h2>
               {finOverview.Sector}
             </p>
           </li>
