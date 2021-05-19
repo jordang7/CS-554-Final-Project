@@ -1,5 +1,8 @@
 import React from "react";
 import FinancialItem from "./components/FinancialItem";
+import FinancialItemWeekly from "./components/FinancialItemWeekly";
+import FinancialItemMonthly from "./components/financialItemMonthly";
+import Overview from "./components/Overview";
 import Home from "./components/Home";
 import SignIn from "./components/SignIn";
 import SignUp from "./components/SignUp";
@@ -10,6 +13,8 @@ import PrivateRoute from "./components/PrivateRoute";
 import About from "./components/aboutus";
 import Brokerage from "./components/Brokerage";
 import CryptoDaily from "./components/CryptoDaily";
+import CryptoWeekly from "./components/CryptoWeekly";
+import CryptoMonthly from "./components/CryptoMonthly";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./store";
@@ -54,8 +59,28 @@ function App() {
                 />
                 <PrivateRoute
                   exact
+                  path="/stock-chart-weekly"
+                  component={FinancialItemWeekly}
+                />
+                <PrivateRoute
+                  exact
+                  path="/stock-chart-monthly"
+                  component={FinancialItemMonthly}
+                />
+                <PrivateRoute
+                  exact
                   path="/crypto-chart"
                   component={CryptoDaily}
+                />
+                <PrivateRoute
+                  exact
+                  path="/crypto-chart-weekly"
+                  component={CryptoWeekly}
+                />
+                <PrivateRoute
+                  exact
+                  path="/crypto-chart-monthly"
+                  component={CryptoMonthly}
                 />
                 <PrivateRoute exact path="/account" component={Account} />
                 <PrivateRoute exact path="/dashboard" component={Dashboard} />
