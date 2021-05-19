@@ -6,6 +6,9 @@ import { getCryptoWeekly, get_search_term } from "../actions/cryptoWeekly";
 import CryptoSearch from "./CryptoSearch";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
+import CryptoNavApi from "./CryptoNavApi";
+import CryptoHealth from "./CryptoHealth";
+import CryptoExchange from "./CryptoExchange";
 
 const FinancialItem = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -32,18 +35,27 @@ const FinancialItem = () => {
     (state) => state.cryptoWeekly.financialItem
   );
   console.log("SELECTOR", financialItem);
-  if(financialItem && financialItem.errorMessage && financialItem.errorMessage==="error"){
-    return(
-      <div className="financial-item-big-wrapper">
-        <div>
-        <CryptoSearch searchValue={searchValue} />
-        <p className="error-message"> Data for this company does not exist or API calls exceeded. Please Try again after sometime! </p>
-        </div>
-      </div>
-    )
-  }else{
+  if (
+    financialItem &&
+    financialItem.errorMessage &&
+    financialItem.errorMessage === "error"
+  ) {
     return (
       <div className="financial-item-big-wrapper">
+        <div>
+          <CryptoSearch searchValue={searchValue} />
+          <p className="error-message">
+            {" "}
+            Data for this company does not exist or API calls exceeded. Please
+            Try again after sometime!{" "}
+          </p>
+        </div>
+      </div>
+    );
+  } else {
+    return (
+      <div className="financial-item-big-wrapper">
+        <CryptoNavApi />
         <div>
           <CryptoSearch searchValue={searchValue} />
           {financialItem ? (
