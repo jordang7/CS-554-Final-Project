@@ -31,14 +31,17 @@ function App() {
               <Link className="stock-chart-link item" to="/stock-chart">
                 Stock Charts
               </Link>
+              <Link className="crypto-chart-link item" to="/crypto-chart">
+                Crypto Charts
+              </Link>
+              <Link className="dashboard-link item" to="/dashboard">
+                My Dashboard
+              </Link>
               <Link className="brokerage-link item" to="/brokerage">
                 Brokerage Apps
               </Link>
               <Link className="about-link item" to="/about">
                 About Us
-              </Link>
-              <Link className="crypto-chart-link item" to="/crypto-chart">
-                Crypto Charts
               </Link>
             </div>
             <div className="App-body">
