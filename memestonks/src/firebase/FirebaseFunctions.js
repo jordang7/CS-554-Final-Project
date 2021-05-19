@@ -1,8 +1,15 @@
 import firebase from "firebase/app";
+import "firebase/firestore";
+import "firebase/storage";
+// import { AuthContext } from "../firebase/Auth";
+
+var firestore = firebase.firestore();
+var storage = firebase.storage();
+// const docRef = firestore.doc("users/"+)
 
 async function doCreateUserWithEmailAndPassword(email, password, displayName) {
   await firebase.auth().createUserWithEmailAndPassword(email, password);
-  firebase.auth().currentUser.updateProfile({ displayName: displayName });
+  await firebase.auth().currentUser.updateProfile({ displayName: displayName });
 }
 
 async function doChangePassword(email, oldPassword, newPassword) {
@@ -15,11 +22,39 @@ async function doChangePassword(email, oldPassword, newPassword) {
   await doSignOut();
 }
 
-async function doUpdateProfile(username) {
-  await firebase.auth().currentUser.updateProfile({
-    displayName: username,
-    // h: address,
+async function doUpdateProfile(
+  uid,
+  username,
+  address,
+  city,
+  state,
+  zip,
+  image,
+  oldImage
+) {
+  const docRef = firestore.doc("users/" + uid);
+  await docRef.set({
+    userDisplayName: username,
+    userAddress: address,
+    userCity: city,
+    userState: state,
+    userZip: zip,
   });
+
+  await firebase.auth().currentUser.updateProfile({ displayName: username });
+  // firebase.auth().currentUser.updateProfile({ photoURL: null });
+  // if (image.name != oldImage) {
+  // await storage
+  //   .ref("images/" + uid)
+  //   .child(oldImage)
+  //   .delete();
+  await storage.ref(`images/${uid}/profileImage`).put(image);
+  // firebase.auth().currentUser.updateProfile({ photoURL: null });
+  // }
+  // await firebase.auth().currentUser.updateProfile({
+  //   displayName: username,
+  //   // h: address,
+  // });
 }
 
 async function doSignInWithEmailAndPassword(email, password) {
@@ -52,8 +87,8 @@ async function doSignOut() {
 export {
   doCreateUserWithEmailAndPassword,
   doSocialSignIn,
-  doUpdateProfile,
   doSignInWithEmailAndPassword,
+  doUpdateProfile,
   doPasswordReset,
   doPasswordUpdate,
   doSignOut,
